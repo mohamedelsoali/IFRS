@@ -1,0 +1,319 @@
+/* --- CSS THEME VARIABLES --- */
+:root {
+    --color-primary: #004d8c; /* Slightly brighter primary blue */
+    --color-primary-dark: #003865;
+    --color-primary-light: #0066b3;
+    --color-primary-text: #FFFFFF;
+    
+    --color-secondary: #ffc107; /* More vibrant yellow */
+    --color-secondary-hover: #e0ac00;
+    --color-secondary-text: #1a202c; /* Darker text for contrast */
+
+    --color-background: #f0f2f5; /* Lighter, subtle background */
+    --color-surface: #ffffff;
+    --color-border: #e2e8f0;
+    
+    --color-text-primary: #1a202c; /* Darker text for better contrast */
+    --color-text-secondary: #4a5568; /* Slightly darker secondary text */
+
+    --color-correct: #28a745;
+    --color-correct-bg: #e6ffe6;
+    --color-incorrect: #dc3545;
+    --color-incorrect-bg: #ffe6e6;
+    --color-info: #007bff;
+    --color-info-bg: #e6f2ff;
+
+    /* Add RGB variables for box-shadow with opacity */
+    --color-secondary-rgb: 255, 193, 7;
+    --color-info-rgb: 0, 123, 255;
+}
+
+.dark {
+    --color-primary: #3f8cff; /* Lighter primary for dark mode */
+    --color-primary-dark: #003865;
+    --color-primary-light: #0066b3;
+    --color-primary-text: #FFFFFF;
+
+    --color-secondary: #ffc107;
+    --color-secondary-hover: #e0ac00;
+    --color-secondary-text: #1a202c;
+
+    --color-background: #1a202c; /* Darker background */
+    --color-surface: #2d3748; /* Darker surface */
+    --color-border: #4a5568;
+
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #a0aec0;
+
+    --color-correct: #28a745;
+    --color-correct-bg: rgba(40, 167, 69, 0.2);
+    --color-incorrect: #dc3545;
+    --color-incorrect-bg: rgba(220, 53, 69, 0.2);
+    --color-info: #007bff;
+    --color-info-bg: rgba(0, 123, 255, 0.2);
+
+    --color-secondary-rgb: 255, 193, 7; /* Keep for dark mode as well */
+    --color-info-rgb: 63, 140, 255; /* Adjusted info for dark mode */
+}
+
+/* --- GENERAL & TYPOGRAPHY (using CSS Variables) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+.prose { max-width: 80ch; }
+.dark .prose h2, .dark .prose h3, .dark .prose p, .dark .prose ul, .dark .prose li, .dark .prose table, .dark .prose strong, .dark .prose thead, .dark .prose td, .dark .prose th { color: var(--color-text-primary); }
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+
+/* --- BUTTONS (using CSS Variables) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    padding: 0.85rem 1.8rem; /* Slightly larger padding */
+    border-radius: 0.75rem; /* More rounded */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Default button shadow */
+}
+.btn:disabled {
+    opacity: 0.6; /* Increased opacity for disabled state */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+}
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Stronger hover shadow */
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary); /* Border matches primary color */
+    box-shadow: none;
+}
+.dark .btn-secondary {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+.dark .btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-text);
+}
+
+/* --- READ ALOUD HIGHLIGHTING --- */
+.reading-highlight {
+    background-color: rgba(255, 193, 7, 0.4); /* More vibrant highlight */
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+/* --- MODERN MODAL STYLES (using CSS Variables) --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    -webkit-backdrop-filter: blur(10px); /* Stronger blur */
+    backdrop-filter: blur(10px);
+}
+.modal-container {
+    background-color: var(--color-background);
+    border-radius: 1.25rem; /* More rounded */
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px; /* Slightly wider modal */
+    border: 1px solid var(--color-border);
+    animation: fadeInUp 0.4s ease-out; /* Add animation to modal appearance */
+}
+.dark .modal-container {
+    background-color: var(--color-surface);
+}
+.modal-header {
+    padding: 1.25rem 2rem; /* Increased padding */
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-surface); /* Header background matches surface */
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+}
+.dark .modal-header {
+    background-color: var(--color-primary-dark); /* Darker header for dark mode */
+    color: var(--color-primary-text);
+}
+.modal-body {
+    padding: 2rem; /* Increased padding */
+    max-height: 70vh; /* Slightly reduced max height */
+    overflow-y: auto;
+}
+
+/* --- SPREADSHEET STYLES (using CSS Variables) --- */
+.spreadsheet-grid { display: grid; grid-template-columns: 45px repeat(8, minmax(90px, 1fr)); overflow: auto; border-radius: 0.75rem; overflow: hidden; } /* Larger cells, rounded grid */
+.spreadsheet-cell { 
+    border: 1px solid var(--color-border); 
+    padding: 6px; 
+    text-align: center; 
+    background-color: var(--color-surface); 
+    font-weight: 600; /* Bolder font */
+    min-height: 35px; /* Taller cells */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dark .spreadsheet-cell { background-color: var(--color-primary-dark); color: var(--color-primary-text); }
+.spreadsheet-input { 
+    width: 100%; 
+    height: 100%; 
+    border: 1px solid var(--color-border); 
+    padding: 6px; 
+    box-sizing: border-box; 
+    text-align: right; 
+    background-color: var(--color-background); 
+    color: var(--color-text-primary); 
+    border-radius: 0.25rem; /* Slight rounding for inputs */
+}
+.spreadsheet-input:focus { 
+    border-color: var(--color-info); 
+    outline: 3px solid var(--color-info); /* Thicker outline */
+    z-index: 10; 
+    position: relative; 
+    box-shadow: 0 0 0 2px var(--color-info-bg); /* Subtle glow on focus */
+}
+.dark .spreadsheet-input { background-color: var(--color-surface); }
+
+/* --- STYLES FOR TABLES IN CONTENT (using CSS Variables) --- */
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.95em; /* Slightly larger font */
+    line-height: 1.6; /* Increased line height */
+    border-radius: 0.75rem; /* Rounded table corners */
+    overflow: hidden; /* Ensures rounded corners are visible */
+}
+.prose th, .prose td {
+    border: 1px solid var(--color-border);
+    padding: 0.85rem 1.25rem; /* Increased padding */
+    text-align: left;
+    vertical-align: top;
+}
+.prose thead {
+    background-color: var(--color-surface);
+}
+.prose th {
+    font-weight: 700; /* Bolder headers */
+    color: var(--color-text-primary);
+}
+
+/* --- STYLES FOR CUSTOM TABLES (to match image) --- */
+.custom-table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin: 1.5em 0;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem; /* More rounded */
+    overflow: hidden;
+    font-size: 0.95em;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Subtle shadow for tables */
+}
+.dark .custom-table {
+    background-color: var(--color-primary-dark); 
+}
+.custom-table th,
+.custom-table td {
+    padding: 1.2rem 1.5rem; /* More padding */
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-border);
+}
+.custom-table thead th {
+    font-weight: 800; /* Extra bold headers */
+    color: var(--color-text-primary);
+    background-color: var(--color-primary); /* Darker header for contrast */
+    color: var(--color-primary-text);
+}
+.custom-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.custom-table td strong {
+    color: var(--color-text-primary);
+}
+
+/* --- RTL Support --- */
+[dir="rtl"] { font-family: 'Tajawal', 'Inter', sans-serif; }
+[dir="rtl"] .text-left { text-align: right !important; }
+[dir="rtl"] .lg\:text-left { text-align: right !important; }
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) { --tw-space-x-reverse: 1; }
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) { --tw-space-x-reverse: 1; }
+[dir="rtl"] .ml-2 { margin-left: 0; margin-right: 0.5rem; }
+[dir="rtl"] .mr-2 { margin-right: 0.5rem; margin-left: 0.5rem; }
+[dir="rtl"] .ml-3 { margin-left: 0; margin-right: 0.75rem; }
+[dir="rtl"] .ml-4 { margin-left: 0; margin-right: 1rem; }
+[dir="rtl"] .lg\:flex-row-reverse { flex-direction: row-reverse; }
+
+/* Specific styles for input fields to match modern aesthetic */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 0.75rem 1rem;
+    border-radius: 0.6rem; /* Slightly more rounded inputs */
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(var(--color-secondary-rgb), 0.2); /* Subtle focus ring */
+}
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="text"],
+.dark input[type="number"],
+.dark textarea {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+.dark input[type="email"]:focus,
+.dark input[type="password"]:focus,
+.dark input[type="text"]:focus,
+.dark input[type="number"]:focus,
+.dark textarea:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(var(--color-secondary-rgb), 0.3);
+}

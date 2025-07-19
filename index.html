@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFRS Excellence Academy | Modern Certification Training</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter and Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind CSS Configuration (using CSS variables) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            'DEFAULT': 'var(--color-primary)',
+                            'dark': 'var(--color-primary-dark)',
+                            'light': 'var(--color-primary-light)',
+                            'text': 'var(--color-primary-text)'
+                        },
+                        'secondary': {
+                            'DEFAULT': 'var(--color-secondary)',
+                            'hover': 'var(--color-secondary-hover)',
+                            'text': 'var(--color-secondary-text)'
+                        },
+                        'background': 'var(--color-background)',
+                        'surface': 'var(--color-surface)',
+                        'border-light': 'var(--color-border)',
+                        'border-dark': 'var(--color-border)',
+                        'text-primary': 'var(--color-text-primary)',
+                        'text-secondary': 'var(--color-text-secondary)',
+                        'correct': 'var(--color-correct)',
+                        'correct-bg': 'var(--color-correct-bg)',
+                        'incorrect': 'var(--color-incorrect)',
+                        'incorrect-bg': 'var(--color-incorrect-bg)',
+                        'info': 'var(--color-info)',
+                        'info-bg': 'var(--color-info-bg)',
+                    },
+                    boxShadow: {
+                        'card': '0 10px 20px rgba(0, 0, 0, 0.08)',
+                        'card-hover': '0 15px 30px rgba(0, 0, 0, 0.15)',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-text-primary dark:bg-background-dark dark:text-text-primary-dark antialiased flex flex-col min-h-screen">
+
+    <div id="app-container" class="flex-grow flex flex-col">
+        <!-- App content will be rendered here by script.js -->
+    </div>
+
+    <!-- Main Application Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
